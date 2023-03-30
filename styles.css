@@ -14,10 +14,12 @@ h1 {
 p {
   color: #DBEDF3;
   font-family: 'Arvo', cursive;
+  font-size: 1.5rem;
+  padding: 4px 10px;
 }
 
 p:hover {
-  color: #b3b318;
+  color: #dcdc18;
   cursor: pointer;
 }
 
