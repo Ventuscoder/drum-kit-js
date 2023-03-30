@@ -23,6 +23,11 @@ p:hover {
   cursor: pointer;
 }
 
+a {
+  text-decoration: none;
+  color: yellow;
+}
+
 footer {
   color: #DBEDF3;
   font-family: sans-serif;
