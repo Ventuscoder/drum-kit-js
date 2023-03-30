@@ -6,19 +6,6 @@ let p = document.querySelector('p')
 p.addEventListener('click', (e)=>{
     if (p.classList[0] == 'unactive') {
         p.textContent = 'Press me to deactivate drum kit!'
-        document.addEventListener('keydown', (e)=>{
-            if (keyArr.includes(e.key.toLowerCase())) {
-                let indexOfKey = keyArr.indexOf(e.key.toLowerCase())
-                playMusic(indexOfKey)
-                animate(keyArr[indexOfKey])
-            }
-        })
-        
-        for (let i = 0; i < buttons.length; i++) {
-        
-            buttons[i].addEventListener('click', handleBtn)
-            buttons[i].addEventListener('mouseover', handleBtn)
-        }
     } else {
         p.textContent = 'Press me to activate drum kit!'
     }
@@ -26,11 +13,31 @@ p.addEventListener('click', (e)=>{
     p.classList.toggle('active')
 })
 
+document.addEventListener('keydown', (e)=>{
+    if (keyArr.includes(e.key.toLowerCase())) {
+        if (p.classList[0] == 'active') {
+            let indexOfKey = keyArr.indexOf(e.key.toLowerCase())
+            playMusic(indexOfKey)
+            animate(keyArr[indexOfKey])
+        } else {
+            alert('Activate Drum Kit first!')
+        }
+    }
+})
+for (let i = 0; i < buttons.length; i++) {
+    
+    buttons[i].addEventListener('click', handleBtn)
+}
+
 
 function handleBtn(e) {
-    let indexOfKey = keyArr.indexOf(e.srcElement.classList[0])
-    playMusic(indexOfKey)
-    animate(keyArr[indexOfKey])
+    if (p.classList[0] == 'active') {
+        let indexOfKey = keyArr.indexOf(e.srcElement.classList[0])
+        playMusic(indexOfKey)
+        animate(keyArr[indexOfKey])
+    } else {
+        alert('Activate Drum Kit first!')
+    }
 }
 
 function playMusic(index) {
